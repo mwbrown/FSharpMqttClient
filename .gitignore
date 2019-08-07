@@ -1,0 +1,7 @@
+
+# Visual Studio user options
+.vs/
+
+# Visual Studio artifacts
+bin/
+obj/
