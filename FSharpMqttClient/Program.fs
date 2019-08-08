@@ -19,13 +19,16 @@ let rec evalLoop () =
     match commandResult with
     | Success ->
         evalLoop ()
-    | Error(i) ->
+    | Error i ->
         printfn "Error processing command: %u" i
         evalLoop ()
-    | ExitCode(i) ->
+    | CommandNotFound cmd ->
+        printfn "Command not found: %s" cmd
+        evalLoop ()
+    | ExitCode i ->
         printfn "Exiting"
+        i
 
 [<EntryPoint>]
 let main argv =
     evalLoop ()
-    0 // return an integer exit code
